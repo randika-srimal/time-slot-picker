@@ -23,7 +23,7 @@ $('#time-slot-picker').timeSlotPicker(
         startTime:'00:00',
         endTime:'24:00',
         timeStep:'15',
-        defaultDate:'2021-05-32',
+        defaultDate:'2021-05-31',
         maxDateTime:'2021-06-01 13:15',
         minDateTime:'2021-05-28 10:15',
         minDayTime:'09:00',
@@ -36,7 +36,7 @@ These passing options are all optional.
   
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![Plugin Screenshot](https://user-images.githubusercontent.com/7983447/120070508-83034380-c0a8-11eb-8883-9ad530c151bb.png)
 
   
 ## License
