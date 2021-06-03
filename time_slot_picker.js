@@ -167,9 +167,9 @@
 
                 var selectedDateTimeString = convertDateObjectToFormat(selectedDateTime, 'YYYY-MM-DD H:i:s');
 
-                $(settings['inputElementSelector']).val(selectedDateTimeString);
+                $(settings['inputElementSelector']).val(selectedDateTimeString).trigger('timeSlotSelected');
             }else{
-                $(settings['inputElementSelector']).val('');
+                $(settings['inputElementSelector']).val('').trigger('timeSlotDiscarded');
             }
         }
 

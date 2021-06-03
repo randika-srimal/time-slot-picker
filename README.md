@@ -28,11 +28,23 @@ $('#time-slot-picker').timeSlotPicker(
         minDateTime:'2021-05-28 10:15',
         minDayTime:'09:00',
         maxDayTime:'18:00',
-        inputElementSelector:'#early-delivery-time'
+        inputElementSelector:'#time-slot-input'
     }
 );
 ```
 These passing options are all optional.
+
+When a time slot selected it will trigger a `timeSlotSelected` event and when discarded it will trigger `timeSlotDiscarded` events. You can catch these to run your methods.
+
+```javascript
+$('#time-slot-input').on('timeSlotSelected',function(){
+  // Your functions
+});
+
+$('#time-slot-input').on('timeSlotDiscarded',function(){
+    // Your functions
+});
+```
   
 ## Screenshots
 

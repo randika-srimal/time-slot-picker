@@ -1,6 +1,6 @@
 {
   "name": "@randika-srimal/time-slot-picker",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "This will add a beautiful embedded time picker to your website.",
   "main": "time_slot_picker.js",
   "scripts": {
