@@ -169,7 +169,10 @@
 
                 $(settings['inputElementSelector']).val(selectedDateTimeString).trigger('timeSlotSelected');
             }else{
-                $(settings['inputElementSelector']).val('').trigger('timeSlotDiscarded');
+            
+            	if($(settings['inputElementSelector']).length>0 && $(settings['inputElementSelector']).val().length>0){
+            		$(settings['inputElementSelector']).val('').trigger('timeSlotDiscarded');
+            	}
             }
         }
 
