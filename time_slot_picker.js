@@ -9,7 +9,7 @@
             maxDateTime:null,
             minDayTime:null,
             maxDayTime:null,
-            defaultDate:new Date().toLocaleDateString(),
+            defaultDate:convertDateObjectToFormat(new Date(),'YYYY-MM-DD'),
             inputElementSelector:null
         }, options );
 
@@ -31,6 +31,9 @@
                 +" "+(hours<10?"0"+hours:hours)
                 +":"+(minutes<10?"0"+minutes:minutes)
                 +":00";
+            }else if(formatString == 'YYYY-MM-DD'){
+                value = year+"-"+(month<10?"0"+month:month)
+                +"-"+(date<10?"0"+date:date);
             }
 
             return value;
@@ -62,6 +65,9 @@
 
             var selectedDate = d;
             var titleDateString = selectedDate.toDateString();
+            selectedDate.setHours(0);
+            selectedDate.setMinutes(0);
+
             var selectedDateInMinutes = ((selectedDate.getTime()/1000)/60);
 
             var timeStep = parseInt(settings['timeStep']);
@@ -169,7 +175,7 @@
 
                 $(settings['inputElementSelector']).val(selectedDateTimeString).trigger('timeSlotSelected');
             }else{
-            
+
             	if($(settings['inputElementSelector']).length>0 && $(settings['inputElementSelector']).val().length>0){
             		$(settings['inputElementSelector']).val('').trigger('timeSlotDiscarded');
             	}
