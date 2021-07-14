@@ -103,13 +103,14 @@
 
                 slotRow.push(slotObject);
                 slotCounter++;
-                index+=timeStep;
-
-                if(slotCounter == 4){
+                
+                if(slotCounter == 4 || index == endTimeInMins){
                     slotCounter = 0;
                     slots.push(slotRow);
                     slotRow=[];
                 }
+
+                index+=timeStep;
             }
 
             var element  = '<table class="time-slot-picker-table" style="width: 100%;">';
