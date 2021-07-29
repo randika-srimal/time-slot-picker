@@ -9,6 +9,7 @@
             maxDateTime:null,
             minDayTime:null,
             maxDayTime:null,
+            skipWeekends:false,
             defaultDate:convertDateObjectToFormat(new Date(),'YYYY-MM-DD'),
             inputElementSelector:null
         }, options );
@@ -59,11 +60,7 @@
             return timeString;
         }
 
-        function rendertimeSlotPicker(days){
-            var d = new Date(settings['defaultDate']);
-            d.setDate(d.getDate() + days);
-
-            var selectedDate = d;
+        function rendertimeSlotPicker(selectedDate){
             var titleDateString = selectedDate.toDateString();
             selectedDate.setHours(0);
             selectedDate.setMinutes(0);
@@ -211,16 +208,47 @@
             minDateTimeInMins = ((minDateObj.getTime())/1000)/60;
         }
 
-        rendertimeSlotPicker(0);
+        rendertimeSlotPicker(new Date(settings['defaultDate']));
 
         $(document).on('click','.tsp-next-btn-wrapper:not(.tsp-next-disabled)',function(){
             days++;
-            rendertimeSlotPicker(days);
+
+            var d = new Date(settings['defaultDate']);
+            d.setDate(d.getDate() + days);
+
+            if(settings['skipWeekends']){
+                var dayOfWeek = d.getDay();
+                var isSaturday = (dayOfWeek === 6);
+                var isSunday = (dayOfWeek  === 0);
+
+                if(isSaturday){
+                    d.setDate(d.getDate()+2);
+                }else if(isSunday){
+                    d.setDate(d.getDate()+1);
+                }
+            }
+
+            rendertimeSlotPicker(d);
         });
 
         $(document).on('click','.tsp-prev-btn-wrapper:not(.tsp-prev-disabled)',function(){
             days--;
-            rendertimeSlotPicker(days);
+            var d = new Date(settings['defaultDate']);
+            d.setDate(d.getDate() + days);
+
+            if(settings['skipWeekends']){
+                var dayOfWeek = d.getDay();
+                var isSaturday = (dayOfWeek === 6);
+                var isSunday = (dayOfWeek  === 0);
+
+                if(isSaturday){
+                    d.setDate(d.getDate()-1);
+                }else if(isSunday){
+                    d.setDate(d.getDate()-2);
+                }
+            }
+
+            rendertimeSlotPicker(d);
         });
 
         $(document).on('mouseenter','.tsp-time-wrapper:not(.tsp-time-slot-disabled)',function(){
