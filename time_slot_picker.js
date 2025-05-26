@@ -11,7 +11,10 @@
             maxDayTime:null,
             skipWeekends:false,
             defaultDate:convertDateObjectToFormat(new Date(),'YYYY-MM-DD'),
-            inputElementSelector:null
+            inputElementSelector:null,
+            headerColor:'#205C40',
+            headerTextColor:'#ffffff',
+            activeSlotColor:'#74956C',
         }, options );
 
         var appendToElement = this;
@@ -111,7 +114,7 @@
             }
 
             var element  = '<table class="time-slot-picker-table" style="width: 100%;">';
-                element += '<thead style="background-color:#103C6D;color:#ffffff;">';
+                element += '<thead style="background-color:'+settings['headerColor']+';color:'+settings['headerTextColor']+';">';
                 element += '<tr>';
                 element += '<th class="tsp-prev-btn-wrapper" style="padding: 10px 0px 10px 0px;cursor:pointer;"><</th>';
                 element += '<th class="title" colspan="2" style="padding: 10px 0px 10px 0px;"></th>';
@@ -253,7 +256,7 @@
 
         $(document).on('mouseenter','.tsp-time-wrapper:not(.tsp-time-slot-disabled)',function(){
             $(this).not('.tsp-active').css({
-                "background-color": "#916A44",
+                "background-color": settings['activeSlotColor'],
                 "color":"#ffffff"
             });
         });
@@ -272,7 +275,7 @@
             });
 
             $(this).addClass('tsp-active').css({
-                "background-color": "#916A44",
+                "background-color": settings['activeSlotColor'],
                 "color":"#ffffff"
             });
 
