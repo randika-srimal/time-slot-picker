@@ -28,7 +28,10 @@ $('#time-slot-picker').timeSlotPicker(
         minDateTime:'2021-05-28 10:15',
         minDayTime:'09:00',
         maxDayTime:'18:00',
-        inputElementSelector:'#time-slot-input'
+        inputElementSelector:'#time-slot-input',
+        headerColor:'#205C40',
+        headerTextColor:'#ffffff',
+        activeSlotColor:'#74956C',
     }
 );
 ```
